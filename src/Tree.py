@@ -156,9 +156,20 @@ class Tree(object):
         
     def printTree(self, _MODE = S):
         """"
-            @todo: 
-                First construct a structure like [Root[C01[C11]],C02,C03[C31]]
-                Then print the above structure
+            Print tree structure with nested-list style (the default, with _MODE S) or hierarchy style, with _MODE T.
+            For example:
+            [0] nested-list style
+                [Root[C01[C11[C111,C112]],C02,C03[C31]]]
+            [1] hierarchy style
+                Root
+                |___ C01
+                |     |___ C11
+                |          |___ C111
+                |          |___ C112
+                |___ C02
+                |___ C03
+                |     |___ C31
+            @param _MODE: Print style, S for Simple nested-list style; T for hierarchical Tree style
         """
         raw = '['
        
@@ -221,11 +232,14 @@ class Tree(object):
                     pass
                 pointer += 1
                     
-        #*************                    Unknown print MODE                      ************#   
+        #*************                Unknown print MODE                  ************#   
         else:
             raise ValueError("Print MODE should be 'S' to print a list representing Tree structure or 'T' to print a REAL Tree")    
             
     def __printLabel__(self, label, level):
+        """
+           Print each node
+        """
         if level == 0:
             print(label)
         else:
