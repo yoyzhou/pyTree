@@ -4,9 +4,9 @@ pyTree
  A Python implementation of Tree data structure
  
  Examples
- ======
- ##Build up a tree structure:
- ###Initialization case 1: Initialize as single node
+ =======
+ ## Build up a tree structure:
+ ### Initialization case 1: Initialize as single node
 	        root = Tree('Root')
 	        child01 = Tree('C01')
 	        child02 = Tree('C02')
@@ -22,7 +22,7 @@ pyTree
 	        child11.addChild(child111)
 	        child11.addChild(child112)
 	        root.printTree(T)
-####Output:
+#### Output:
 				Root
 	            |___ C01
 	            |     |___ C11
@@ -32,17 +32,17 @@ pyTree
 	            |___ C03
 	            |     |___ C31
 	            
- ###Initialization case 2: Initialize with child
+ ### Initialization case 2: Initialize with child
   			child31 = Tree('C31')
  			child03 = Tree('C03', child31 )
  			
- ###Initialization case 3: Initialize with children
+ ### Initialization case 3: Initialize with children
   			child01 = Tree('C01')
 	        child02 = Tree('C02')
 	        child03 = Tree('C03')
  			root = Tree('Root', [child01, child02, child03] )
  			
-##Methods
+## Methods
 		Methods
 			|___ addChild
 			|___ addChildren
