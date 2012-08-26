@@ -1,11 +1,11 @@
 pyTree
 ======
 
- A Python implementation of Tree data structure
+A Python implementation of Tree data structure
  
-Examples
-=======
-## Build up a tree structure:
+#Examples
+
+## Build up tree structure:
 ### Initialization case 1: Initialize as single node
 	        root = Tree('Root')
 	        child01 = Tree('C01')
@@ -57,6 +57,5 @@ Examples
 			|___ isBranch
 			|___ printTree
 
-LICENSING
-======
+#LICENSING
 Copyright 2012 Yoyo Zhou. Distributed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).  See the `LICENSE` file for details.
