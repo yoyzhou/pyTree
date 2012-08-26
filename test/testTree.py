@@ -12,7 +12,7 @@ from Tree import Tree as Tree
 class TestTree(unittest.TestCase):
     
     def setUp(self):
-        r"""
+        """
         Test Tree structure:
             Root
             |___ C01
@@ -102,11 +102,21 @@ class TestTree(unittest.TestCase):
         self.assertEqual(self.child03.getChild(0), self.child31);
         
         
-    def test_GetChildItem(self):
+    def test_GetNode(self):
         self.assertEqual(self.root.getNode('C31'), self.child31)
         self.assertEqual(self.child11.getNode('C11'), self.child11)
         self.assertEqual(self.root.getNode('C41'), None)
+    
+    def test_DelChild(self):
+        self.child11.delChild(0);
+        self.root.printTree(T)
         
+     
+    def test_DelNode(self):
+        self.root.delNode('C03');
+        self.root.printTree(T)
+        
+            
     def test_PrintTree(self):
         self.root.printTree(S)
         self.root.printTree(T)

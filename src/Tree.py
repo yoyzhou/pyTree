@@ -1,4 +1,6 @@
 '''
+pyTree
+
 Created on Aug 21, 2012
 
 @author: yoyzhou
@@ -6,13 +8,14 @@ Created on Aug 21, 2012
 import collections
 
 (S,T) = range(2)
+
  
 class Tree(object):
     '''
         A Python implementation of Tree data structure 
     '''
     
-      
+     
     def __init__(self, data = None, children = None):
         '''
         @param data: content of this node
@@ -40,12 +43,13 @@ class Tree(object):
     
     def __setattr__(self, name, value):
         
+            
         """
             Hide the __parent and __children attribute from using dot assignment.
             To add __children, please use addChild or addChildren method; And
             node's parent isn't assignable
         """
-      
+            
         if name in ('parent', '__parent', 'children'):
                 raise AttributeError("To add children, please use addChild or addChildren method.")
         else:
@@ -125,7 +129,45 @@ class Tree(object):
                 nodesQ.extend(child.getChildren())
                 del nodesQ[0]
                 
+    def delChild(self, index):
+        """  
+            Delete node's No. index child node.
+            @param index: Which child node to delete in children list, starts with 0 to number of children - 1
+            @raise IndexError: if the index is out of range 
+        """
+        try:
+            del self.__children[index]
+        except IndexError:
+            raise IndexError("Index starts with 0 to number of children - 1")
+    
+    def delNode(self, content):
+         
+        """
+                         
+            Delete the first matching item(including self) whose data is equal to content. 
+            Method uses data == content to determine whether a node's data equals to content, note if your node's data is 
+            self defined class, overriding object's __eq__ might be required.
+            Implement Tree travel (level first) algorithm using queue
 
+            @param content: node's content to be searched 
+        """
+        
+        nodesQ = [self]
+        
+        while nodesQ:
+            child = nodesQ[0]
+            if child.data == content:
+                if child.isRoot():
+                    del self
+                    return
+                else:
+                    parent = child.getParent()
+                    parent.delChild(parent.getChildren().index(child))
+                    return
+            else:
+                nodesQ.extend(child.getChildren())
+                del nodesQ[0]
+                
     def getRoot(self):
         """
             Get root of the current node.
@@ -253,6 +295,7 @@ class Tree(object):
             if label.strip() != '': 
                 print('{0}{1}{2}{3} {4}'.format('|', leadingSpaces, addl, '_' * 3, label))
         
+            
             
             
             
