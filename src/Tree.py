@@ -212,6 +212,7 @@ class Tree(object):
                 |___ C03
                 |     |___ C31
             @param _MODE: Print style, S for Simple nested-list style; T for hierarchical Tree style
+            @todo: A more elegant way to achieve this function using Stack structure, [hint: push and pop nodes with additional level info]. 
         """
         raw = '['
        
