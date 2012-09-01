@@ -1,5 +1,5 @@
 '''
-pyTree
+pyTree: A Python implementation of Tree data structure 
 
 Created on Aug 21, 2012
 
@@ -143,7 +143,6 @@ class Tree(object):
     def delNode(self, content):
          
         """
-                         
             Delete the first matching item(including self) whose data is equal to content. 
             Method uses data == content to determine whether a node's data equals to content, note if your node's data is 
             self defined class, overriding object's __eq__ might be required.
@@ -196,13 +195,11 @@ class Tree(object):
         else:
             return False
         
-    def printTree(self, _MODE = S):
+    def prettyTree(self):
         """"
-            Print tree structure with nested-list style (the default, with _MODE S) or hierarchy style, with _MODE T.
+            Another implementation of printing tree using Stack
+            Print tree structure in hierarchy style.
             For example:
-            [0] nested-list style
-                [Root[C01[C11[C111,C112]],C02,C03[C31]]]
-            [1] hierarchy style
                 Root
                 |___ C01
                 |     |___ C11
@@ -211,74 +208,62 @@ class Tree(object):
                 |___ C02
                 |___ C03
                 |     |___ C31
-            @param _MODE: Print style, S for Simple nested-list style; T for hierarchical Tree style
-            @todo: A more elegant way to achieve this function using Stack structure, [hint: push and pop nodes with additional level info]. 
+            A more elegant way to achieve this function using Stack structure, 
+            for constructing the Nodes Stack push and pop nodes with additional level info. 
         """
-        raw = '['
-       
-        nodesQ = [self]
-        index = 0;
+
+        level = 0        
+        NodesS = [self, level]   #init Nodes Stack
         
-        while nodesQ:
-            c_raw = '['
-            child = nodesQ[0]
-            if child.isRoot():
-                raw += str(child.data)
-                nodesQ.extend(child.getChildren())
-                index = len(raw) 
+        while NodesS:
+            head = NodesS.pop() #head pointer points to the first item of stack, can be a level identifier or tree node 
+            if isinstance(head, int):
+                level = head
             else:
-                if raw.find(str(child)) != -1: #already in raw
-                    nodesQ.extend(child.getChildren())
-                    del nodesQ[0]
-                    continue
-                else:
-                    parent = child.getParent()
-                    index = raw.find(str(parent)) + len(str(parent))
-                    nodesQ.extend(child.getChildren())
-                    c_raw += str(child.data) + '['
-            
-            if child.getChildren() == []: 
-                c_raw =  c_raw[ : -1] + ']'                 
+                self.__printLabel__(str(head.data), level)
+                children = head.getChildren()
+                children.reverse()
+                
+                if NodesS:
+                    NodesS.append(level)    #push level info if stack is not empty
+                
+                if children:          #add children if has children nodes 
+                    NodesS.extend(children)
+                    level += 1
+                    NodesS.append(level)
+    
+    def nestedTree(self):
+        """"
+            Print tree structure in nested-list style.
+            For example:
+            [0] nested-list style
+                [Root[C01[C11[C111,C112]],C02,C03[C31]]]
+            """
+        
+        NestedT = ''  
+        delimiter_o = '['
+        delimiter_c = ']'                                                                                  
+        NodesS = [delimiter_c, self, delimiter_o]
+                                                                                            
+        while NodesS:
+            head = NodesS.pop()
+            if isinstance(head, str):
+                NestedT += head
             else:
-                c_raw +=  ','.join([str(c) for c in child.getChildren()]) + ']]'
+                NestedT += str(head.data)
+                
+                children = head.getChildren()
             
-            raw = raw[ : index] + c_raw + raw[index: ]
-            del nodesQ[0]
-        
-        #*************Print a Simple list representing the Tree structure************#  
-        if _MODE == S:
-            print(raw)
-        
-        #*************    Print a REAL Tree structure with parameter T   ************#   
-        elif _MODE == T:
-            cur = 0
-            pointer = 1
-            level = 0
-            
-            while pointer != len(raw):
-                cur_char = raw[pointer] 
-                if cur_char == '[':
-                    label = raw[cur + 1 : pointer]
-                    self.__printLabel__(label, level)
-                    cur = pointer
-                    level +=1
-                elif cur_char == ']':
-                    label = raw[cur + 1 : pointer]
-                    self.__printLabel__(label, level)
-                    cur = pointer
-                    level -= 1
-                elif cur_char == ',':
-                    label = raw[cur + 1 : pointer]
-                    self.__printLabel__(label, level)
-                    cur = pointer
-                else:
-                    pass
-                pointer += 1
-                    
-        #*************                Unknown print MODE                  ************#   
-        else:
-            raise ValueError("Print MODE should be 'S' to print a list representing Tree structure or 'T' to print a REAL Tree")    
-            
+                if children:          #add children if has children nodes 
+                    NodesS.append(delimiter_c)
+                    for child in children: 
+                        NodesS.append(child)
+                        NodesS.append(',')
+                    NodesS.pop()
+                    NodesS.append(delimiter_o) 
+               
+        print(NestedT)
+          
     def __printLabel__(self, label, level):
         """
            Print each node

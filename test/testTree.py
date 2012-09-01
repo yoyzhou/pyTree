@@ -109,18 +109,18 @@ class TestTree(unittest.TestCase):
     
     def test_DelChild(self):
         self.child11.delChild(0);
-        self.root.printTree(T)
+        self.root.prettyTree()
         
      
     def test_DelNode(self):
         self.root.delNode('C03');
-        self.root.printTree(T)
-        
+        self.root.prettyTree()
+      
             
     def test_PrintTree(self):
-        self.root.printTree(S)
-        self.root.printTree(T)
-        #[Root[C01[C11[C111,C112]],C02,C03[C31]]]
+        self.root.prettyTree()
+        self.root.nestedTree()
+       
         
     def tearDown(self):
         del self.root
