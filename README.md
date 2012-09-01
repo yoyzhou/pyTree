@@ -21,7 +21,11 @@ A Python implementation of Tree data structure
 	        child03.addChild(child31)
 	        child11.addChild(child111)
 	        child11.addChild(child112)
-	        root.printTree(T)
+	        
+	        #to print hierarchy tree structure
+	        root.prettyTree()
+	        #to print nested-list tree structure
+	        #root.nestedTree()
 #### Output:
 		   		Root
 	            |___ C01
