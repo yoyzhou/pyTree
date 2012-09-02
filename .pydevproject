@@ -7,5 +7,6 @@
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
 <path>/pyTree/src</path>
 <path>/pyTree/test</path>
+<path>/pyTree/pyTree</path>
 </pydev_pathproperty>
 </pydev_project>
