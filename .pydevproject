@@ -5,8 +5,7 @@
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_INTERPRETER">Python3</pydev_property>
 <pydev_property name="org.python.pydev.PYTHON_PROJECT_VERSION">python 3.0</pydev_property>
 <pydev_pathproperty name="org.python.pydev.PROJECT_SOURCE_PATH">
-<path>/pyTree/src</path>
 <path>/pyTree/test</path>
-<path>/pyTree/pyTree</path>
+<path>/pyTree/src</path>
 </pydev_pathproperty>
 </pydev_project>

@@ -5,7 +5,8 @@ Created on Aug 25, 2012
 @author: yoyzhou
 '''
 import unittest
-from Tree import Tree as Tree
+
+from pyTree.Tree import Tree as Tree
 
 (S, T) = range(2)
 

@@ -27,24 +27,24 @@ A Python implementation of Tree data structure
 	        #to print nested-list tree structure
 	        #root.nestedTree()
 #### Output:
-		   		Root
-	            |___ C01
-	            |     |___ C11
-	            |          |___ C111
-	            |          |___ C112
-	            |___ C02
-	            |___ C03
-	            |     |___ C31
+		   	Root
+	         |___ C01
+	         |     |___ C11
+	         |          |___ C111
+	         |          |___ C112
+	         |___ C02
+	         |___ C03
+	         |     |___ C31
 	            
 ### Initialization case 2: Initialize with child
-	child31 = Tree('C31')
- 	child03 = Tree('C03', child31 )
+		child31 = Tree('C31')
+	 	child03 = Tree('C03', child31 )
  			
 ### Initialization case 3: Initialize with children
-	child01 = Tree('C01')
-	child02 = Tree('C02')
-	child03 = Tree('C03')
-	root = Tree('Root', [child01, child02, child03] )
+		child01 = Tree('C01')
+		child02 = Tree('C02')
+		child03 = Tree('C03')
+		root = Tree('Root', [child01, child02, child03] )
  			
 ## Methods
 		Methods
@@ -59,7 +59,8 @@ A Python implementation of Tree data structure
 			|___ getRoot
 			|___ isRoot
 			|___ isBranch
-			|___ printTree
+			|___ prettyTree
+			|___ nestedTree
 
 #LICENSING
 Copyright 2012 Yoyo Zhou. Distributed under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).  See the `LICENSE` file for details.

@@ -1,5 +1,5 @@
 '''
-pyTree: A Python implementation of Tree data structure 
+pyTree: A list-derived TREE data structure in Python 
 
 Created on Aug 21, 2012
 
