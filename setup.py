@@ -15,7 +15,6 @@ setup(
       url='https://github.com/yoyzhou/pyTree/tree/pretty',
       packages=['pyTree'],
       package_dir={'pyTree': 'src/pyTree'},
-      py_modules = ['Tree', 'pyTree/Tree'],
       classifiers=[
           'Development Status :: 4 - Beta ',
           'Environment :: Console',
