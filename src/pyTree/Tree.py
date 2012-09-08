@@ -220,7 +220,7 @@ class Tree(object):
             if isinstance(head, int):
                 level = head
             else:
-                self.__printLabel__(str(head.data), level)
+                self.__printLabel__(head, NodesS, level)
                 children = head.getChildren()
                 children.reverse()
                 
@@ -264,25 +264,39 @@ class Tree(object):
                
         print(NestedT)
           
-    def __printLabel__(self, label, level):
+    def __printLabel__(self, head, NodesS, level):
         """
            Print each node
         """
+        leading = '' 
+        lasting = '|___ '
+        label = str(head)
+        
         if level == 0:
-            print(label)
+            print(str(head))
         else:
-            if level == 1:
-                leadingSpaces = ''
-                addl = ''
-            else:
-                leadingSpaces =   ' ' * 5 * (level - 1)
-                addl = '|'
+            for l in range(0, level - 1):
+                sibling = False
+                parentT = head.__getParent__(level - l)
+                for c in parentT.getChildren():
+                    if c in NodesS:
+                        sibling = True
+                        break
+                if sibling:
+                    leading += '|     '
+                else:
+                    leading += '     '
             
             if label.strip() != '': 
-                print('{0}{1}{2}{3} {4}'.format('|', leadingSpaces, addl, '_' * 3, label))
+                print('{0}{1}{2}'.format( leading, lasting, label))
         
-            
-            
+    
+    def __getParent__(self, up):
+        parent = self;
+        while up:
+            parent = parent.getParent()
+            up -= 1
+        return parent
             
             
             

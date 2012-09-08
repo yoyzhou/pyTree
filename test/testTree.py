@@ -110,17 +110,34 @@ class TestTree(unittest.TestCase):
     
     def test_DelChild(self):
         self.child11.delChild(0);
-        self.root.prettyTree()
+        #self.root.prettyTree()
         
      
     def test_DelNode(self):
         self.root.delNode('C03');
-        self.root.prettyTree()
+        #self.root.prettyTree()
       
             
     def test_PrintTree(self):
-        self.root.prettyTree()
-        self.root.nestedTree()
+        root = Tree('root')
+        t1 = Tree('1')
+        t11 = Tree('11')
+        t111 = Tree('111')
+        t1111 = Tree('1111')
+        t11111 = Tree('11111')
+        t111111 = Tree('111111')
+        t1111111 = Tree('1111111')
+        root.addChild(t1)
+        t1.addChild(t11)
+        t11.addChild(t111)
+        t111.addChild(t1111)
+        t1111.addChild(t11111)
+        t1111.addChild(Tree('44444'))
+        t11111.addChild(t111111)
+        t111111.addChild(t1111111)
+        root.prettyTree()       
+        #self.root.prettyTree()
+        # self.root.nestedTree()
        
         
     def tearDown(self):
