@@ -270,7 +270,7 @@ class Tree(object):
         """
         leading = '' 
         lasting = '|___ '
-        label = str(head)
+        label = str(head.data)
         
         if level == 0:
             print(str(head))
