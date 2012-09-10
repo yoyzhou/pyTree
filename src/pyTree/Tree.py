@@ -108,7 +108,7 @@ class Tree(object):
     
     
     
-    def getNode(self, content):
+    def getNode(self, content, includeself = True):
         """
                          
             Get the first matching item(including self) whose data is equal to content. 
@@ -119,8 +119,14 @@ class Tree(object):
             @param content: node's content to be searched 
             @return: Return node which contains the same data as parameter content, return None if no such node
         """
-        nodesQ = [self]
         
+        nodesQ = []
+        
+        if includeself:
+            nodesQ.append(self)
+        else:
+            nodesQ.extend(self.getChildren())
+            
         while nodesQ:
             child = nodesQ[0]
             if child.data == content:
