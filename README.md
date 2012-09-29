@@ -1,7 +1,7 @@
 pyTree
 ======
 
-A Python implementation of Tree data structure
+A Python 3 implementation of Tree data structure
  
 #Examples
 
